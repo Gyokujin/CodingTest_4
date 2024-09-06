@@ -1,0 +1,19 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 문자열 my_string, overwrite_string과 정수 s가 주어집니다. 문자열 my_string의 인덱스 s부터 overwrite_string의 길이만큼을 문자열 overwrite_string으로 바꾼 문자열을 return 하는 solution 함수를 작성해 주세요.
+string solution(string my_string, string overwrite_string, int s)
+{
+    string answer = "";
+    
+    for (int i = 0; i < s; i++)
+        answer += my_string[i];
+    
+    answer += overwrite_string;
+    
+    for (int i = overwrite_string.size() + s; i < my_string.size(); i++)
+        answer += my_string[i];
+    
+    return answer;
+}
