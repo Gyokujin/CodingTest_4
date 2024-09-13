@@ -1,0 +1,23 @@
+#include <string>
+#include <vector>
+#include <map>
+using namespace std;
+
+// 문자열 배열 strArr이 주어집니다. strArr의 원소들을 길이가 같은 문자열들끼리 그룹으로 묶었을 때 가장 개수가 많은 그룹의 크기를 return 하는 solution 함수를 완성해 주세요.
+int solution(vector<string> strArr)
+{
+    map<int, int> numbers;
+    
+    for (string s : strArr)
+    {
+        int size = s.size();
+        numbers[size]++;
+    }
+    
+    int answer = 0;
+    
+    for (pair<int, int> count : numbers)
+        answer = max(answer, count.second);
+    
+    return answer;
+}
