@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 수 n이 매개변수로 주어질 때, 다음과 같은 n × n 크기의 이차원 배열 arr를 return 하는 solution 함수를 작성해 주세요.
+// arr[i][j] (0 ≤ i, j < n)의 값은 i = j라면 1, 아니라면 0입니다.
+vector<vector<int>> solution(int n)
+{
+    vector<vector<int>> answer;
+    
+    for (int i = 0; i < n; i++)
+    {
+        vector<int> numbers;
+        
+        for (int j = 0; j < n; j++)
+            numbers.push_back(i == j ? 1 : 0);
+        
+        answer.push_back(numbers);
+    }
+    
+    return answer;
+}
