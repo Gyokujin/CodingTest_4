@@ -1,0 +1,32 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 이차원 정수 배열 arr이 매개변수로 주어집니다. arr의 행의 수가 더 많다면 열의 수가 행의 수와 같아지도록 각 행의 끝에 0을 추가하고,
+// 열의 수가 더 많다면 행의 수가 열의 수와 같아지도록 각 열의 끝에 0을 추가한 이차원 배열을 return 하는 solution 함수를 작성해 주세요.
+vector<vector<int>> solution(vector<vector<int>> arr)
+{
+    vector<vector<int>> answer = arr;
+    int size = 0;
+    
+    if (answer.size() < answer[0].size())
+    {
+        vector<int> vec(answer[0].size(), 0);
+        size = answer[0].size() - answer.size();
+        
+        for (int i = 0; i < size; i ++)
+            answer.push_back(vec);
+    }
+    else if (answer.size() > answer[0].size())
+    {
+        size = answer.size() - answer[0].size();
+        
+        for (int i = 0; i < answer.size(); i++)
+        {
+            for (int j = 0; j < size; j++)
+                answer[i].push_back(0);
+        }
+    }
+    
+    return answer;
+}
