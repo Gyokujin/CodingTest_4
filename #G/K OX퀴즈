@@ -1,0 +1,54 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 덧셈, 뺄셈 수식들이 'X [연산자] Y = Z' 형태로 들어있는 문자열 배열 quiz가 매개변수로 주어집니다. 수식이 옳다면 "O"를 틀리다면 "X"를 순서대로 담은 배열을 return하도록 solution 함수를 완성해주세요.
+vector<string> solution(vector<string> quiz)
+{
+    vector<string> answer;
+    
+    for (string curQuiz : quiz)
+    {
+        vector<string> words;
+        string curWord;
+        
+        for (int i = 0; i < curQuiz.size(); i++)
+        {
+            char c = curQuiz[i];
+            if (curQuiz[i] == ' ')
+            {
+                words.push_back(curWord);
+                curWord = "";
+            }
+            else
+                curWord += curQuiz[i];
+        }
+        
+        words.push_back(curWord);
+        
+        int total = stoi(words[0]);
+        char curMath;
+        
+        for (int i = 1; i < words.size() - 2; i++)
+        {
+            curWord = words[i];
+            
+            if (i % 2 != 0)
+                curMath = curWord[0];
+            else
+            {
+                if (curMath == '+')
+                    total += stoi(curWord);
+                else
+                    total -= stoi(curWord);
+            }
+        }
+        
+        if (total == stoi(*(words.end() - 1)))
+            answer.push_back("O");
+        else
+            answer.push_back("X");
+    }
+    
+    return answer;
+}
