@@ -1,0 +1,43 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// my_string은 "3 + 5"처럼 문자열로 된 수식입니다. 문자열 my_string이 매개변수로 주어질 때, 수식을 계산한 값을 return 하는 solution 함수를 완성해주세요.
+int solution(string my_string)
+{
+    string curWord;
+    vector<string> words;
+    
+    for (int i = 0; i < my_string.size(); i++)
+    {
+        if (my_string[i] == ' ')
+        {
+            words.push_back(curWord);
+            curWord = "";
+        }
+        else
+            curWord += my_string[i];
+    }
+    
+    words.push_back(curWord);
+    
+    int answer = stoi(words[0]);
+    char oper;
+    
+    for (int i = 1; i < words.size(); i++)
+    {
+        curWord = words[i];
+        
+        if (i % 2 != 0) // 연산자
+            oper = curWord[0];
+        else
+        {
+            if (oper == '+')
+                answer += stoi(curWord);
+            else
+                answer -= stoi(curWord);
+        }
+    }
+    
+    return answer;
+}
