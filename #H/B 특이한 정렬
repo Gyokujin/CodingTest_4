@@ -1,0 +1,35 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 정수 n을 기준으로 n과 가까운 수부터 정렬하려고 합니다. 이때 n으로부터의 거리가 같다면 더 큰 수를 앞에 오도록 배치합니다. 정수가 담긴 배열 numlist와 정수 n이 주어질 때 numlist의
+// 원소를 n으로부터 가까운 순서대로 정렬한 배열을 return하도록 solution 함수를 완성해주세요.
+vector<int> solution(vector<int> numlist, int n)
+{
+    vector<int> answer = numlist;
+    
+    for (int i = 0; i < answer.size() - 1; i++)
+    {
+        int curNum = answer[i];
+        int curDis = abs(curNum - n);
+        int curIndex = i;
+        
+        for (int j = i + 1; j < answer.size(); j++)
+        {
+            int dis = abs(answer[j] - n);
+            
+            if ((curDis > dis) || (curDis == dis && curNum < answer[j]))
+            {
+                curNum = answer[j];
+                curDis = dis;
+                curIndex = j;
+            }
+        }
+        
+        int temp = answer[i];
+        answer[i] = answer[curIndex];
+        answer[curIndex] = temp;
+    }
+    
+    return answer;
+}
