@@ -21,9 +21,9 @@ int solution(int a, int b)
         }
     }
     
-    bool isAble = false;
+    bool isAble = true;
     
-    do
+    while (isAble)
     {
         isAble = false;
         
@@ -38,8 +38,7 @@ int solution(int a, int b)
             isAble = true;
         }
     }
-    while (isAble);
-    
+
     int answer = curB == 1 ? 1 : 2;
     return answer;
 }
