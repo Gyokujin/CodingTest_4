@@ -1,0 +1,54 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 한 개 이상의 항의 합으로 이루어진 식을 다항식이라고 합니다. 다항식을 계산할 때는 동류항끼리 계산해 정리합니다. 덧셈으로 이루어진 다항식 polynomial이 매개변수로 주어질 때,
+// 동류항끼리 더한 결괏값을 문자열로 return 하도록 solution 함수를 완성해보세요. 같은 식이라면 가장 짧은 수식을 return 합니다.
+string solution(string polynomial)
+{
+    string word = "";
+    vector<string> words;
+    
+    for (char c : polynomial)
+    {
+        if (c == '+' && word != "")
+        {
+            words.push_back(word);
+            word = "";
+        }
+        else if (c != ' ')
+            word += c;
+    }
+    
+    if (word != "")
+        words.push_back(word);
+
+    int xNum = 0;
+    int num = 0;
+    
+    for (string s : words)
+    {
+        if (s.find('x') != string::npos)
+        {
+            string xSub = s.substr(0, s.size() - 1);
+            
+            if (xSub == "")
+                xNum++;
+            else
+                xNum += stoi(xSub);
+        }
+        else
+            num += stoi(s);
+    }
+    
+    string answer = "";
+    
+    if (xNum != 0 && num != 0)
+        answer = (xNum == 1 ? "" : to_string(xNum)) + 'x' + " + " + to_string(num);
+    else if (xNum != 0)
+        answer = (xNum == 1 ? "" : to_string(xNum)) + 'x';
+    else
+         answer = to_string(num);
+
+    return answer;
+}
