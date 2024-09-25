@@ -1,0 +1,61 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 다음 그림과 같이 지뢰가 있는 지역과 지뢰에 인접한 위, 아래, 좌, 우 대각선 칸을 모두 위험지역으로 분류합니다.
+// 지뢰는 2차원 배열 board에 1로 표시되어 있고 board에는 지뢰가 매설 된 지역 1과, 지뢰가 없는 지역 0만 존재합니다.
+// 지뢰가 매설된 지역의 지도 board가 매개변수로 주어질 때, 안전한 지역의 칸 수를 return하도록 solution 함수를 완성해주세요.
+void PlantBomb(vector<vector<int>>* curMap, int x, int y, int size)
+{
+    if (x - 1 >= 0 && y + 1 < size) // 왼쪽 위
+        (*curMap)[x - 1][y + 1]++;
+    
+    if (y + 1 < size) // 위
+        (*curMap)[x][y + 1]++;
+    
+    if (x + 1 < size && y + 1 < size) // 오른쪽 위
+        (*curMap)[x + 1][y + 1]++;
+    
+    if (x - 1 >= 0) // 왼쪽
+        (*curMap)[x - 1][y]++;
+    
+    (*curMap)[x][y]++; // 중앙
+    
+    if (x + 1 < size) // 오른쪽
+        (*curMap)[x + 1][y]++;
+    
+    if (x - 1 >= 0 && y - 1 >= 0) // 왼쪽 아래
+        (*curMap)[x - 1][y - 1]++;
+    
+    if (y - 1 >= 0) // 아래
+        (*curMap)[x][y - 1]++;
+    
+    if (x + 1 < size && y - 1 >= 0) // 오른쪽 아래
+        (*curMap)[x + 1][y - 1]++;
+}
+
+int solution(vector<vector<int>> board)
+{
+    int answer = 0;
+    vector<vector<int>> counts(board.size(), vector<int>(board.size(), 0));
+    
+    for (int i = 0; i < board.size(); i++)
+    {
+        for (int j = 0; j < board.size(); j++)
+        {
+            if (board[i][j] == 1)
+                PlantBomb(&counts, i, j, board.size());
+        }
+    }
+    
+    for (vector<int> curLine : counts)
+    {
+        for (int n : curLine)
+        {
+            if (n == 0)
+                answer++;
+        }
+    }
+    
+    return answer;
+}
