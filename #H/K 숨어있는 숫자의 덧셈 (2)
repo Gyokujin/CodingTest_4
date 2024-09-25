@@ -1,0 +1,26 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 문자열 my_string이 매개변수로 주어집니다. my_string은 소문자, 대문자, 자연수로만 구성되어있습니다. my_string안의 자연수들의 합을 return하도록 solution 함수를 완성해주세요.
+int solution(string my_string)
+{
+    int answer = 0;
+    string nWord = "";
+    
+    for (char c : my_string)
+    {
+        if ((int)c >= 48 && (int)c <= 57)
+            nWord += c;
+        else if (nWord != "")
+        {
+            answer += stoi(nWord);
+            nWord = "";
+        }
+    }
+    
+    if (nWord != "")
+        answer += stoi(nWord);
+    
+    return answer;
+}
