@@ -1,0 +1,54 @@
+#include <string>
+#include <vector>
+using namespace std;
+
+// 양의 정수 n이 매개변수로 주어집니다. n × n 배열에 1부터 n2 까지 정수를 인덱스 [0][0]부터 시계방향 나선형으로 배치한 이차원 배열을 return 하는 solution 함수를 작성해 주세요.
+vector<vector<int>> solution(int n)
+{
+    vector<vector<int>> answer(n, vector<int>(n, 0));
+    int row = 0;
+    int column = 0;
+    bool isRight = true;
+        
+    for (int i = 1; i <= n * n; i++)
+    {
+        answer[row][column] = i;
+        
+        if (isRight)
+        {
+            if (column < n - 1 && answer[row][column + 1] == 0)
+                column++;
+            else if (row < n - 1 && answer[row + 1][column] == 0)
+                row++;
+            else if (column > 0 && answer[row][column - 1] == 0)
+            {
+                column--;
+                isRight = false;
+            }
+            else
+            {
+                row--;
+                isRight = false;
+            }
+        }
+        else
+        {
+            if (column > 0 && answer[row][column - 1] == 0)
+                column--;
+            else if (row > 0 && answer[row - 1][column] == 0)
+                row--;
+            else if (column < n - 1 && answer[row][column + 1] == 0)
+            {
+                column++;
+                isRight = true;
+            }
+            else
+            {
+                row++;
+                isRight = true;
+            }
+        }
+    }
+    
+    return answer;
+}
