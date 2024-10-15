@@ -1,21 +1,24 @@
-#include <vector>
+#include <string>
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 int main()
 {
 	int index, number;
+	int minNum = 1000001;
+	int maxNum = -1000001;
 	cin >> index;
-
-	vector<int> numbers;
 
 	for (int i = 0; i < index; i++)
 	{
 		cin >> number;
-		numbers.push_back(number);
+
+		if (minNum > number || minNum == 0)
+			minNum = number;
+
+		if (maxNum < number)
+			maxNum = number;
 	}
 
-	sort(numbers.begin(), numbers.end());
-	cout << numbers[0] << ' ' << numbers[numbers.size() - 1];
+	cout << minNum << ' ' << maxNum;
 }
