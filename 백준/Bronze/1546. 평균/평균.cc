@@ -8,7 +8,7 @@ int main()
 	int N, M;
 	cin >> N;
 
-	double total = 0;
+	float total = 0;
 	int point;
 	vector<int> points;
 
@@ -22,8 +22,8 @@ int main()
 
 	for (int num : points)
 	{
-		total += (double)num / M * 100 * N;
+		total += (float)num / M * 100;
 	}
 
-	cout << total / (N * N);
+	cout << total / N;
 }
