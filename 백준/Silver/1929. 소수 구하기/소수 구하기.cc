@@ -31,7 +31,7 @@ int main()
     for (int i = m; i <= n; i++)
     {
         if (sieveNums[i])
-            cout << i << endl;
+            cout << i << '\n';
     }
 
     return 0;
