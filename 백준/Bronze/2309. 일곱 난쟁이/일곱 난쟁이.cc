@@ -39,6 +39,4 @@ int main()
 
 	for (int num : dwarfs)
 		cout << num << endl;
-
-	return 0;
 }
