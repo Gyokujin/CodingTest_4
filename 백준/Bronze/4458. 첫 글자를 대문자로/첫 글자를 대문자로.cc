@@ -13,9 +13,7 @@ int main()
 		string sentence;
 		getline(cin, sentence);
 
-		if ((int)sentence[0] >= 97 && (int)sentence[0] <= 122) // A ~ Z
-			sentence[0] = char((int)sentence[0] - 32); // 대문자와 소문자의 차는 32
-
+		sentence[0] = toupper(sentence[0]);
 		cout << sentence << endl;
 	}
 }
