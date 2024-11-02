@@ -1,4 +1,3 @@
-#include <map>
 #include <iostream>
 using namespace std;
 
@@ -8,7 +7,7 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	map<int, int> numbers;
+	int numbers[10001] = { 0 };
 	int N, input;
 	cin >> N;
 
@@ -18,9 +17,9 @@ int main()
 		numbers[input]++;
 	}
 
-	for (pair<int ,int> curPair : numbers)
+	for (int i = 1; i < 10001; i++)
 	{
-		for (int i = 0; i < curPair.second; i++)
-			cout << curPair.first << "\n";
+		for (int j = 0; j < numbers[i]; j++)
+			cout << i << "\n";
 	}
 }
