@@ -9,14 +9,13 @@ int main()
 	cout.tie(NULL);
 
 	map<int, int> numbers;
-	int N;
+	int N, input;
 	cin >> N;
 
 	for (int i = 0; i < N; i++)
 	{
-		int number;
-		cin >> number;
-		numbers[number]++;
+		cin >> input;
+		numbers[input]++;
 	}
 
 	for (pair<int ,int> curPair : numbers)
