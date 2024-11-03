@@ -10,7 +10,7 @@ int main()
 	{
 		if (N % i == 0)
 		{
-			cout << i << endl;
+			cout << i << "\n";
 			N /= i;
 			i = 1; // 사용한 약수는 초기화
 		}
