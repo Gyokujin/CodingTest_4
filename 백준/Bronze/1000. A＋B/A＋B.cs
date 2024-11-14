@@ -7,7 +7,6 @@ class Program
         string[] inputs = Console.ReadLine().Split();
         int A = int.Parse(inputs[0]);
         int B = int.Parse(inputs[1]);
-        int answer = A + B;
-        Console.WriteLine(answer);
+        Console.WriteLine(A + B);
     }
 }
