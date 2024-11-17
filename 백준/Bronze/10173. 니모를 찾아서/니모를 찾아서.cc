@@ -1,6 +1,5 @@
 #include <string>
 #include <algorithm>
-#include <cctype>
 #include <iostream>
 using namespace std;
 
@@ -10,10 +9,12 @@ int main()
 
     while (getline(cin, word) && word != "EOI")
     {
-        transform(word.begin(), word.end(), word.begin(),
-            [](unsigned char c) { return toupper(c); });
+        string curWord = "";
 
-        if (word.find("NEMO") != string::npos)
+        for (char c : word)
+            curWord += toupper(c);
+
+        if (curWord.find("NEMO") != string::npos)
             cout << "Found" << endl;
         else
             cout << "Missing" << endl;
