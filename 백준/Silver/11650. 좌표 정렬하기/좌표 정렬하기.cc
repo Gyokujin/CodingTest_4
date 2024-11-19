@@ -7,14 +7,10 @@ int main()
 {
 	int N;
 	cin >> N;
-	vector<vector<int>> points;
+	vector<vector<int>> points(N, vector<int>(2));
 
 	for (int i = 0; i < N; i++)
-	{
-		int x, y;
-		cin >> x >> y;
-		points.push_back({ x, y });
-	}
+		cin >> points[i][0] >> points[i][1];
 
 	sort(points.begin(), points.end());
 
