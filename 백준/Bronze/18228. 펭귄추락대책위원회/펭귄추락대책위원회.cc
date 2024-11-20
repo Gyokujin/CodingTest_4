@@ -13,20 +13,7 @@ int main()
 		cin >> ices[i];
 
 	int location = find(ices.begin(), ices.end(), -1) - ices.begin(); // 현재 펭귄이 밟은 위치
-	int left = 0;
-	int right = 0;
-
-	for (int i = 0; i < location; i++) // 펭귄 기준 왼쪽에 있는 얼음중 가장 낮은 값의 얼음을 찾는다.
-	{
-		if (left == 0 || ices[i] < left)
-			left = ices[i];
-	}
-
-	for (int i = location + 1; i < ices.size(); i++) // 펭귄 기준 오른쪽 있는 얼음중 가장 낮은 값의 얼음을 찾는다.
-	{
-		if (right == 0 || ices[i] < right)
-			right = ices[i];
-	}
-
+	int left = *min_element(ices.begin(), ices.begin() + location);
+	int right = *min_element(ices.begin() + location + 1, ices.end());
 	cout << left + right; // 왼쪽 얼음을 깨는데 필요한 힘 + 오른쪽 얼음을 깨는데 필요한 힘
 }
