@@ -20,7 +20,7 @@ int main()
 				comDiv = j;
 		}
 
-		for (int j = max(a, b); j < a * b; j++) // 최대 공약수를 먼저 구한다
+		for (int j = max(a, b); j < a * b; j++) // 최소 공배수를 구한다
 		{
 			if (j % a == 0 && j % b == 0)
 			{
