@@ -13,19 +13,23 @@ int main()
 		
 		if (oper == "E")
 			break;
-		else if (oper == ">")
-			cout << "Case " << count << ": " << (num1 > num2 ? "true" : "false") << endl;
-		else if (oper == ">=")
-			cout << "Case " << count << ": " << (num1 >= num2 ? "true" : "false") << endl;
-		else if (oper == "<")
-			cout << "Case " << count << ": " << (num1 < num2 ? "true" : "false") << endl;
-		else if (oper == "<=")
-			cout << "Case " << count << ": " << (num1 <= num2 ? "true" : "false") << endl;
-		else if (oper == "==")
-			cout << "Case " << count << ": " << (num1 == num2 ? "true" : "false") << endl;
-		else if (oper == "!=")
-			cout << "Case " << count << ": " << (num1 != num2 ? "true" : "false") << endl;
+		
+		cout << "Case " << count << ": ";
 
+		if (oper == ">")
+			cout << (num1 > num2 ? "true" : "false");
+		else if (oper == ">=")
+			cout << (num1 >= num2 ? "true" : "false");
+		else if (oper == "<")
+			cout << (num1 < num2 ? "true" : "false");
+		else if (oper == "<=")
+			cout << (num1 <= num2 ? "true" : "false");
+		else if (oper == "==")
+			cout << (num1 == num2 ? "true" : "false");
+		else if (oper == "!=")
+			cout << (num1 != num2 ? "true" : "false");
+
+		cout << endl;
 		count++;
 	}
 }
