@@ -17,13 +17,11 @@ int main()
 
 		for (char c : input)
 		{
-			if (c >= 'a' && c <= 'z')
-				alphabets.insert(c);
-			else if (c >= 'A' && c <= 'Z') // 대문자의 경우는 소문자로 변형후 추가(대문자와 소문자의 아스키 코드의 차이는 32)
-				alphabets.insert(c + 32);
+			if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) // 알파벳일 경우 소문자로 변형 후 추가
+				alphabets.insert(tolower(c));
 		}
 
-		if (alphabets.size() == 'z' - 'a' + 1)
+		if (alphabets.size() == 'z' - 'a' + 1) // 요소가 모두 존재한다면 pangram 출력
 			cout << "pangram";
 		else
 		{
