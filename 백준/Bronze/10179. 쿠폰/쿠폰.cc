@@ -1,15 +1,18 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+int main()
+{
     int n;
-    double price;
     cin >> n;
-    for (int i = 0; i < n; i++) {
+
+    cout << fixed;
+    cout.precision(2);
+
+    for (int i = 0; i < n; i++)
+    {
+        double price;
         cin >> price;
-        cout << fixed;
-        cout.precision(2);
         cout << "$" << price * 0.8 << endl;
     }
-    return 0;
 }
